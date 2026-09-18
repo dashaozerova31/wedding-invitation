@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#f7f5f0">
+    <title>Иван & Дарья — Приглашение</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Oranienbaum&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #e8e6e1;
+            color: #1a1a1a;
+            font-size: 17px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Oranienbaum', serif;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 1.9rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 20px; }
+        h3 { font-size: 1.25rem; margin-bottom: 15px; }
+
+        p { margin-bottom: 14px; }
+
+        .page {
+            max-width: 620px;
+            margin: 0 auto;
+            background-color: #f7f5f0;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .section {
+            padding: 55px 28px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-light { background-color: #f7f5f0; }
+        .section-dark  { background-color: #2d3a2e; color: #f7f5f0; }
+        .section-beige { background-color: #e8e6e1; }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding: 40px 28px 60px;
+            text-align: center;
+        }
+
+        .heart-deco {
+            font-size: 1.4rem;
+            color: #2d3a2e;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .section-dark .heart-deco { color: #f7f5f0; }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            margin-bottom: 12px;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 .amp {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #2d3a2e;
+            letter-spacing: 0;
+            text-transform: none;
+            margin: 0 0.05em;
+            display: inline-block;
+            vertical-align: -0.12em;
+            line-height: 0.8;
+        }
+
+        .date-line {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 18px 0 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .date-line::before,
+        .date-line::after {
+            content: "";
+            display: block;
+            width: 35px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.5;
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto 0;
+            filter: grayscale(20%);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ========== ЦИТАТА ========== */
+        .quote-text {
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .quote-author {
+            font-style: normal;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.75;
+        }
+
+        /* ========== КАЛЕНДАРЬ ========== */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-top: 25px;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calendar-grid > span {
+            padding: 7px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 32px;
+        }
+
+        .calendar-grid .header {
+            font-weight: 600;
+            opacity: 0.55;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .heart-day {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .heart-day::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 28px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 23'%3E%3Cpath d='M12 21.35 C 12 21.35, 1 14.31, 1 7.5 C 1 3.92, 3.92 1, 7.5 1 C 9.86 1, 11.22 2.62, 12 4 C 12.78 2.62, 14.14 1, 16.5 1 C 20.08 1, 23 3.92, 23 7.5 C 23 14.31, 12 21.35, 12 21.35 Z' fill='%232d3a2e'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+        }
+
+        .heart-num {
+            position: relative;
+            z-index: 1;
+            color: #f7f5f0;
+            font-weight: 600;
+            font-size: 0.78rem;
+            line-height: 1;
+            padding-bottom: 2px;
+        }
+
+        /* ========== ТАЙМЛАЙН ========== */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            text-align: left;
+            max-width: 440px;
+            margin: 10px auto 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background-image: linear-gradient(to bottom, #2d3a2e 50%, transparent 50%);
+            background-size: 1px 9px;
+        }
+
+        .section-dark .timeline::before {
+            background-image: linear-gradient(to bottom, #f7f5f0 50%, transparent 50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        /* === ОБНОВЛЁННЫЕ СЕРДЕЧКИ НА ЛИНИИ === */
+        .timeline-item::before {
+            content: "♥";
+            position: absolute;
+            left: -20.5px;
+            top: 3px;
+            font-size: 1.2rem;
+            line-height: 1;
+            color: #2d3a2e;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .section-dark .timeline-item::before { color: #f7f5f0; }
+
+        .timeline-time {
+            font-family: 'Oranienbaum', serif;
+            font-size: 1.3rem;
+            min-width: 55px;
+            line-height: 1.2;
+        }
+
+        .timeline-content { font-size: 0.95rem; line-height: 1.6; }
+
+        .timeline-content strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        /* ========== ДРЕСС-КОД ========== */
+        .palette-img {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            display: block;
+            margin: 25px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            max-width: 380px;
+            margin: 25px auto 0;
+        }
+
+        .palette-swatch {
+            aspect-ratio: 1 / 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .palette-swatch::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.45) 0%,
+                rgba(255, 255, 255, 0.05) 40%,
+                rgba(0, 0, 0, 0.08) 100%);
+        }
+
+        /* ========== ПОЖЕЛАНИЯ ========== */
+        .wishes-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .wishes-list li {
+            margin-bottom: 24px;
+            font-size: 1rem;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.65;
+        }
+
+        .wishes-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: -4px;
+            font-size: 1.7rem;
+            color: #f7f5f0;
+        }
+
+        .wishes-list li strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+
+        /* ========== КНОПКА ========== */
+        .rsvp-btn {
+            display: inline-block;
+            background-color: #2d3a2e;
+            color: #f7f5f0;
+            padding: 18px 44px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            border: 2px solid #2d3a2e;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            margin-top: 15px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .rsvp-btn:hover,
+        .rsvp-btn:active {
+            background-color: transparent;
+            color: #2d3a2e;
+        }
+
+        .rsvp-deadline {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 25px;
+            opacity: 0.7;
+        }
+
+        /* ========== ФИНАЛ ========== */
+        .final {
+            padding: 70px 28px 60px;
+        }
+
+        .final .signature {
+            font-style: italic;
+            font-size: 1.15rem;
+            margin-top: 15px;
+        }
+
+        /* ========== АНИМАЦИЯ ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== АДАПТИВ ========== */
+        @media (min-width: 700px) {
+            body { font-size: 18px; padding: 40px 20px; }
+            .page { border-radius: 4px; overflow: hidden; }
+            .section { padding: 70px 50px; }
+            .hero { padding: 60px 50px 80px; }
+            .hero h1 { font-size: 2.6rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
+            .quote-text { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="page">
+
+        <!-- HERO -->
+        <section class="hero section-light">
+            <div class="heart-deco">♥</div>
+            <h1>Иван <span class="amp">&</span> Дарья</h1>
+            <div class="date-line">23 ИЮЛЯ 2027</div>
+           <!-- ФОТО ВСТАВИТЬ СЮДА!<img class="hero-photo"
+                 src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                 alt="Иван и Дарья">-->
+        </section>
+
+        <!-- ЦИТАТА 
+        <section class="section section-dark">
+            <div class="heart-deco">♥</div>
+            <p class="quote-text">«Любовь — это единственная реальность, которая имеет значение в нашей жизни»</p>
+            <p class="quote-author">Фёдор Достоевский</p>
+        </section>-->
+ 
+	<!-- ЦИТАТА -->
+        <section class="section section-dark">
+            <div class="heart-deco">♥</div>
+            <p class="quote-text">«Любовь сильнее всего, святее всего, несказаннее всего»</p>
+            <p class="quote-author">Николай Карамзин</p>
+        </section>
+
+
+
+        <!-- ПРИГЛАШЕНИЕ + КАЛЕНДАРЬ -->
+        <section class="section section-beige reveal">
+            <h2>Дорогие наши гости!</h2>
+            <p>С радостью сообщаем вам о важном событии в нашей жизни — мы женимся!</p>
+            <p>Будем счастливы отметить этот радостный день вместе с вами.</p>
+
+            <h3 style="margin-top: 35px;">Июль 2027</h3>
+            <div class="calendar-grid">
+                <span class="header">Пн</span><span class="header">Вт</span><span class="header">Ср</span>
+                <span class="header">Чт</span><span class="header">Пт</span><span class="header">Сб</span><span class="header">Вс</span>
+
+                <!-- Июль 2027 начинается с четверга -->
+                <span></span><span></span><span></span>
+                <span>1</span><span>2</span><span>3</span><span>4</span>
+
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
+                <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+                <span>19</span><span>20</span><span>21</span><span>22</span>
+                <span class="heart-day"><span class="heart-num">23</span></span>
+                <span>24</span><span>25</span>
+
+                <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span>
+            </div>
+        </section>
+
+        <!-- ПРОГРАММА ДНЯ -->
+        <section class="section section-light reveal">
+            <h2>Программа дня</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">15:30</div>
+                    <div class="timeline-content">
+                        <strong>Welcome зона</strong>
+                        Встреча гостей, приветственные напитки.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">16:00</div>
+                    <div class="timeline-content">
+                        <strong>Регистрация</strong>
+                        Торжественная церемония бракосочетания.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">16:30</div>
+                    <div class="timeline-content">
+                        <strong>Банкет</strong>
+                        Праздничный ужин, поздравления и танцы.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">23:00</div>
+                    <div class="timeline-content">
+                        <strong>Конец вечера</strong>
+                        Завершение праздника.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ДРЕСС-КОД -->
+        <section class="section section-beige reveal">
+            <h2>Дресс-код</h2>
+            <p>Мы будем признательны, если вы поддержите общую цветовую гамму на нашей свадьбе.</p>
+
+            <img class="palette-img" src="images/palette.jpg" alt="Палитра цветов дресс-кода">
+
+            <!-- ВАРИАНТ 2: CSS-палитра (резервный вариант без картинки)
+            <div class="palette-grid">
+                <div class="palette-swatch" style="background-color: #4a5240;"></div>
+                <div class="palette-swatch" style="background-color: #8a9a7b;"></div>
+                <div class="palette-swatch" style="background-color: #c5c9a8;"></div>
+                <div class="palette-swatch" style="background-color: #e8b4b8;"></div>
+                <div class="palette-swatch" style="background-color: #f0c5c1;"></div>
+                <div class="palette-swatch" style="background-color: #f5e6d3;"></div>
+                <div class="palette-swatch" style="background-color: #3d2e26;"></div>
+                <div class="palette-swatch" style="background-color: #b8a089;"></div>
+                <div class="palette-swatch" style="background-color: #d4c5b0;"></div>
+                <div class="palette-swatch" style="background-color: #b8c0c8;"></div>
+                <div class="palette-swatch" style="background-color: #a8b0b8;"></div>
+                <div class="palette-swatch" style="background-color: #c8b8a0;"></div>
+            </div>
+            -->
+        </section>
+
+        <!-- ПОЖЕЛАНИЯ -->
+        <section class="section section-dark reveal">
+            <h2>Несколько пожеланий</h2>
+            <ul class="wishes-list">
+                <li>
+                    Если вы хотите подарить нам цветы, мы будем рады настольным играм, которые принесут радость и веселье в наши вечера.
+                </li>
+                <li>
+                    Давайте оставим традицию «Горько!» в стороне. Вместо этого просто наслаждайтесь моментом, смейтесь и радуйтесь вместе с нами!
+                </li>
+            </ul>
+        </section>
+
+        <!-- АНКЕТА ГОСТЯ -->
+        <section class="section section-light reveal">
+            <h2>Анкета гостя</h2>
+            <p>Пожалуйста, ответьте на несколько организационных вопросов — это поможет нам сделать праздник комфортным для вас.</p>
+
+            <a href="https://forms.yandex.ru/u/6aad2484e010db3613d23e00"
+               target="_blank"
+               rel="noopener"
+               class="rsvp-btn">Заполнить анкету</a>
+
+            <p class="rsvp-deadline">Нам очень важно знать, сможете ли вы разделить с нами этот день. Просим ответить до 23.04.27</p>
+        </section>
+
+        <!-- ФИНАЛ -->
+        <section class="section section-beige final reveal">
+            <div class="heart-deco">♥</div>
+            <h2>До встречи!</h2>
+            <p class="signature">С любовью,<br>Иван и Дарья</p>
+            <div class="date-line" style="margin-top: 35px;">23 июля 2027</div>
+        </section>
+
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
